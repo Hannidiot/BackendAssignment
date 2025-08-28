@@ -10,4 +10,8 @@
     <ProjectReference Include="..\BackendAssignment.Core\BackendAssignment.Core.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Orders\Create\" />
+  </ItemGroup>
+
 </Project>

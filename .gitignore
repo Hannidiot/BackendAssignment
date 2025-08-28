@@ -55,3 +55,7 @@ nunit-*.xml
 
 # visual studio
 .vs/
+
+# customized
+*.sqlite
+log*.txt
