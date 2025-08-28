@@ -16,7 +16,7 @@ public class Order : EntityBase<Guid>, IAggregateRoot
         CreatedAt = DateTime.UtcNow;
     }
 
-    public void AddOrderItem(Guid productId, int quantity)
+    public void AddOrderItem(int productId, int quantity)
     {
         OrderItems.Add(new OrderItem(Id, productId, quantity));
     }

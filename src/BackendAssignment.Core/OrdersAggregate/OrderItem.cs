@@ -4,4 +4,14 @@ public class OrderItem : EntityBase
 {
     public Guid OrderId { get; set; }
     public int ProductId { get; set; }
+    public int Quantity { get; set; }
+
+    public OrderItem() { }
+
+    public OrderItem(Guid orderId, int productId, int quantity)
+    {
+        OrderId = orderId;
+        ProductId = productId;
+        Quantity = quantity;
+    }
 }
