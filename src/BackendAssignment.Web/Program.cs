@@ -32,8 +32,6 @@ builder.Services.AddFastEndpoints()
 // wire up commands
 //builder.Services.AddTransient<ICommandHandler<CreateContributorCommand2,Result<int>>, CreateContributorCommandHandler2>();
 
-builder.AddServiceDefaults();
-
 var app = builder.Build();
 
 await app.UseAppMiddlewareAndSeedDatabase();

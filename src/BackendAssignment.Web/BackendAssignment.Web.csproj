@@ -25,7 +25,6 @@
   <ItemGroup>
     <ProjectReference Include="..\BackendAssignment.Infrastructure\BackendAssignment.Infrastructure.csproj" />
     <ProjectReference Include="..\BackendAssignment.UseCases\BackendAssignment.UseCases.csproj" />
-    <ProjectReference Include="..\BackendAssignment.ServiceDefaults\BackendAssignment.ServiceDefaults.csproj" />
   </ItemGroup>
 
 </Project>

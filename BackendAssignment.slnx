@@ -11,8 +11,6 @@
     <File Path="Directory.Packages.props" />
   </Folder>
   <Folder Name="/src/">
-    <Project Path="src/BackendAssignment.AspireHost/BackendAssignment.AspireHost.csproj" />
-    <Project Path="src/BackendAssignment.ServiceDefaults/BackendAssignment.ServiceDefaults.csproj" />
     <Project Path="src/BackendAssignment.Core/BackendAssignment.Core.csproj" />
     <Project Path="src/BackendAssignment.Infrastructure/BackendAssignment.Infrastructure.csproj" />
     <Project Path="src/BackendAssignment.UseCases/BackendAssignment.UseCases.csproj" />
