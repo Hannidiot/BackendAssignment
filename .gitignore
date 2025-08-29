@@ -58,4 +58,4 @@ nunit-*.xml
 
 # customized
 *.sqlite*
-log*.txt
+log*.*

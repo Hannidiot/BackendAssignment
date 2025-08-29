@@ -19,6 +19,8 @@ public static class MiddlewareConfig
       app.UseHsts();
     }
 
+    app.UseCorrelationIdLogging();
+    
     app.UseFastEndpoints()
         .UseSwaggerGen(); // Includes AddFileServer and static files middleware
 

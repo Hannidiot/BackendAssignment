@@ -7,7 +7,7 @@ POST {{host}}:{{port}}/api/orders
 Content-Type: application/json
 
 {
-  "orderId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+  "orderId": "{{$guid}}",
   "customerName": "John Doe",
   "orderItems": [
     {
@@ -26,7 +26,7 @@ POST {{host}}:{{port}}/api/orders
 Content-Type: application/json
 
 {
-  "orderId": "3fa85f64-5717-4562-b3fc-2c963f66afa7",
+  "orderId": "{{$guid}}",
   "customerName": "Jane Smith",
   "orderItems": [
     {
@@ -41,7 +41,7 @@ POST {{host}}:{{port}}/api/orders
 Content-Type: application/json
 
 {
-  "orderId": "3fa85f64-5717-4562-b3fc-2c963f66afa8",
+  "orderId": "{{$guid}}",
   "customerName": "Bob Wilson",
   "orderItems": [
     {
