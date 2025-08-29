@@ -72,8 +72,8 @@ public class CreateOrderHandlerHandle
         var result = await handler.Handle(command, CancellationToken.None);
         
         // Assert
-        Assert.Equal(Ardalis.Result.ResultStatus.Invalid, result.Status);
-        Assert.Contains("Products with IDs 999 do not exist", result.ValidationErrors.First().ErrorMessage);
+        Assert.Equal(Ardalis.Result.ResultStatus.Error, result.Status);
+        Assert.Contains("Products with IDs 999 do not exist", result.Errors.First());
         await orderRepository.DidNotReceive().AddAsync(Arg.Any<Order>(), Arg.Any<CancellationToken>());
     }
 }

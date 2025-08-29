@@ -9,7 +9,7 @@ public static class ServiceConfigs
     services.AddInfrastructureServices(builder.Configuration, logger)
             .AddMediatrConfigs();
 
-    logger.LogInformation("{Project} services registered", "Mediatr and Email Sender");
+    logger.LogInformation("{Project} services registered", "Mediatr");
 
     return services;
   }
