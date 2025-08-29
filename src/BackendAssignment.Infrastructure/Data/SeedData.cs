@@ -21,25 +21,25 @@ public static class SeedData
     {
       OrderItems = new List<OrderItem>
       {
-        new OrderItem { ProductId = 1, Quantity = 1 }, // Laptop
-        new OrderItem { ProductId = 3, Quantity = 2 }  // Headphones
+        new OrderItem { ProductId = 1, Quantity = 1 },
+        new OrderItem { ProductId = 3, Quantity = 2 }
       }
     },
     new Order(Guid.NewGuid(), "Jane Smith")
     {
       OrderItems = new List<OrderItem>
       {
-        new OrderItem { ProductId = 2, Quantity = 1 }, // Smartphone
-        new OrderItem { ProductId = 4, Quantity = 1 }, // Keyboard
-        new OrderItem { ProductId = 5, Quantity = 1 }  // Mouse
+        new OrderItem { ProductId = 2, Quantity = 1 },
+        new OrderItem { ProductId = 4, Quantity = 1 },
+        new OrderItem { ProductId = 5, Quantity = 1 }
       }
     },
     new Order(Guid.NewGuid(), "Bob Wilson")
     {
       OrderItems = new List<OrderItem>
       {
-        new OrderItem { ProductId = 3, Quantity = 3 }, // Headphones
-        new OrderItem { ProductId = 5, Quantity = 2 }  // Mouse
+        new OrderItem { ProductId = 3, Quantity = 3 },
+        new OrderItem { ProductId = 5, Quantity = 2 }
       }
     }
   ];

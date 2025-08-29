@@ -1,6 +1,5 @@
 ﻿using Ardalis.ListStartupServices;
 using BackendAssignment.Infrastructure.Data;
-using Microsoft.EntityFrameworkCore;
 
 namespace BackendAssignment.Web.Configurations;
 
@@ -39,7 +38,7 @@ public static class MiddlewareConfig
     try
     {
       var context = services.GetRequiredService<AppDbContext>();
-      await context.Database.MigrateAsync();
+      //await context.Database.MigrateAsync();
       await context.Database.EnsureCreatedAsync();
       await SeedData.InitializeAsync(context);
     }

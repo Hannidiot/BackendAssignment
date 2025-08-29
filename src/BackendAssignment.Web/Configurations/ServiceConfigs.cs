@@ -9,15 +9,6 @@ public static class ServiceConfigs
     services.AddInfrastructureServices(builder.Configuration, logger)
             .AddMediatrConfigs();
 
-
-    if (builder.Environment.IsDevelopment())
-    {
-
-    }
-    else
-    {
-    }
-
     logger.LogInformation("{Project} services registered", "Mediatr and Email Sender");
 
     return services;
