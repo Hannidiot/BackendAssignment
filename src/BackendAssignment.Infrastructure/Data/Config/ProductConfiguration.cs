@@ -1,6 +1,4 @@
 ﻿using BackendAssignment.Core.ProductsAggregate;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace BackendAssignment.Infrastructure.Data.Config;
 

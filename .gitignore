@@ -57,5 +57,5 @@ nunit-*.xml
 .vs/
 
 # customized
-*.sqlite
+*.sqlite*
 log*.txt

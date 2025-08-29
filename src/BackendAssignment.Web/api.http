@@ -2,42 +2,51 @@
 @host=https://localhost
 @port=57679
 
-// List all contributors
-GET {{host}}:{{port}}/Contributors
-
-###
-
-// Get a specific contributor
-@id_to_get=1
-GET {{host}}:{{port}}/Contributors/{{id_to_get}}
-
-###
-
-// Add a new contributor
-POST {{host}}:{{port}}/Contributors
+### Create a new order
+POST {{host}}:{{port}}/api/orders
 Content-Type: application/json
 
 {
-  "name": "John Doe 3",
-  "email": "test@test.com",
-  "phoneNumber": "1234567890"
+  "orderId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+  "customerName": "John Doe",
+  "orderItems": [
+    {
+      "productId": 1,
+      "quantity": 2
+    },
+    {
+      "productId": 2,
+      "quantity": 1
+    }
+  ]
 }
 
-###
-
-// Update a contributor
-@id_to_update=1
-PUT {{host}}:{{port}}/Contributors/{{id_to_update}}
+### Create order with non-existent product (should fail)
+POST {{host}}:{{port}}/api/orders
 Content-Type: application/json
 
 {
-  "id": {{id_to_update}},
-  "name": "ardalis2"
+  "orderId": "3fa85f64-5717-4562-b3fc-2c963f66afa7",
+  "customerName": "Jane Smith",
+  "orderItems": [
+    {
+      "productId": 999,
+      "quantity": 1
+    }
+  ]
 }
 
-###
+### Create order with invalid quantity (should fail validation)
+POST {{host}}:{{port}}/api/orders
+Content-Type: application/json
 
-// Delete a contributor
-@id_to_delete=1
-DELETE {{host}}:{{port}}/Contributors/{{id_to_delete}}
-
+{
+  "orderId": "3fa85f64-5717-4562-b3fc-2c963f66afa8",
+  "customerName": "Bob Wilson",
+  "orderItems": [
+    {
+      "productId": 1,
+      "quantity": 0
+    }
+  ]
+}
