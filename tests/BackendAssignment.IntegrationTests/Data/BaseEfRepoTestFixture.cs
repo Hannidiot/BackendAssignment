@@ -1,4 +1,5 @@
-﻿using BackendAssignment.Core.ContributorAggregate;
+﻿using BackendAssignment.Core.OrdersAggregate;
+using BackendAssignment.Core.ProductsAggregate;
 using BackendAssignment.Infrastructure.Data;
 
 namespace BackendAssignment.IntegrationTests.Data;
@@ -16,23 +17,24 @@ public abstract class BaseEfRepoTestFixture
 
   protected static DbContextOptions<AppDbContext> CreateNewContextOptions()
   {
-    // Create a fresh service provider, and therefore a fresh
-    // InMemory database instance.
     var serviceProvider = new ServiceCollection()
         .AddEntityFrameworkInMemoryDatabase()
         .BuildServiceProvider();
 
-    // Create a new options instance telling the context to use an
-    // InMemory database and the new service provider.
     var builder = new DbContextOptionsBuilder<AppDbContext>();
-    builder.UseInMemoryDatabase("cleanarchitecture")
+    builder.UseInMemoryDatabase("BackendAssignment")
            .UseInternalServiceProvider(serviceProvider);
 
     return builder.Options;
   }
 
-  protected EfRepository<Contributor> GetRepository()
+  protected EfRepository<Order> GetOrderRepository()
   {
-    return new EfRepository<Contributor>(_dbContext);
+    return new EfRepository<Order>(_dbContext);
+  }
+
+  protected EfRepository<Product> GetProductRepository()
+  {
+    return new EfRepository<Product>(_dbContext);
   }
 }
