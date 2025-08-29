@@ -32,4 +32,9 @@
     <ProjectReference Include="..\..\src\BackendAssignment.UseCases\BackendAssignment.UseCases.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Core\ProductAggregate\" />
+    <Folder Include="Core\OrderAggregate\" />
+  </ItemGroup>
+
 </Project>

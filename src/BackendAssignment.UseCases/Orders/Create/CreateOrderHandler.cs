@@ -1,8 +1,6 @@
 ﻿using BackendAssignment.Core.OrdersAggregate;
 using BackendAssignment.Core.ProductsAggregate;
-using BackendAssignment.Core.ProductsAggregate.Specifications;
 using Microsoft.Extensions.Logging;
-using Ardalis.Result;
 
 namespace BackendAssignment.UseCases.Orders.Create;
 
@@ -34,7 +32,7 @@ public class CreateOrderHandler : ICommandHandler<CreateOrderCommand, Result<Gui
             if (missingProductIds.Any())
             {
                 _logger.LogWarning("Attempted to create order with non-existent products: {MissingProductIds}", missingProductIds);
-                return Result<Guid>.Invalid(new ValidationError($"Products with IDs {string.Join(", ", missingProductIds)} do not exist"));
+                return Result<Guid>.Error($"Products with IDs {string.Join(", ", missingProductIds)} do not exist");
             }
 
             // Create the order
@@ -51,8 +49,7 @@ public class CreateOrderHandler : ICommandHandler<CreateOrderCommand, Result<Gui
             await _orderRepository.SaveChangesAsync(cancellationToken);
 
             _logger.LogInformation("Order created successfully with ID: {OrderId}", request.OrderId);
-            // todo: return the actual order ID
-            return Result<Guid>.Success(Guid.NewGuid()); // Return success result
+            return order.Id;
         }
         catch (Exception ex)
         {
