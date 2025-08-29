@@ -1,18 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using BackendAssignment.Core.OrdersAggregate;
+﻿using BackendAssignment.Core.OrdersAggregate;
 using BackendAssignment.Core.ProductsAggregate;
 using BackendAssignment.Core.ProductsAggregate.Specifications;
-using BackendAssignment.Core.Interfaces;
 using Microsoft.Extensions.Logging;
 using Ardalis.Result;
 
 namespace BackendAssignment.UseCases.Orders.Create;
 
-public class CreateOrderHandler : ICommandHandler<CreateOrderCommand, Result<int>>
+public class CreateOrderHandler : ICommandHandler<CreateOrderCommand, Result<Guid>>
 {
     private readonly IRepository<Order> _orderRepository;
     private readonly IRepository<Product> _productRepository;
@@ -28,7 +22,7 @@ public class CreateOrderHandler : ICommandHandler<CreateOrderCommand, Result<int
         _logger = logger;
     }
 
-    public async Task<Result<int>> Handle(CreateOrderCommand request, CancellationToken cancellationToken)
+    public async Task<Result<Guid>> Handle(CreateOrderCommand request, CancellationToken cancellationToken)
     {
         try
         {
@@ -40,7 +34,7 @@ public class CreateOrderHandler : ICommandHandler<CreateOrderCommand, Result<int
             if (missingProductIds.Any())
             {
                 _logger.LogWarning("Attempted to create order with non-existent products: {MissingProductIds}", missingProductIds);
-                return Result<int>.Invalid(new ValidationError($"Products with IDs {string.Join(", ", missingProductIds)} do not exist"));
+                return Result<Guid>.Invalid(new ValidationError($"Products with IDs {string.Join(", ", missingProductIds)} do not exist"));
             }
 
             // Create the order
@@ -57,12 +51,13 @@ public class CreateOrderHandler : ICommandHandler<CreateOrderCommand, Result<int
             await _orderRepository.SaveChangesAsync(cancellationToken);
 
             _logger.LogInformation("Order created successfully with ID: {OrderId}", request.OrderId);
-            return Result<int>.Success(1); // Return success result
+            // todo: return the actual order ID
+            return Result<Guid>.Success(Guid.NewGuid()); // Return success result
         }
         catch (Exception ex)
         {
             _logger.LogError(ex, "Error creating order with ID: {OrderId}", request.OrderId);
-            return Result<int>.Error($"Error creating order: {ex.Message}");
+            return Result<Guid>.Error($"Error creating order: {ex.Message}");
         }
     }
 }

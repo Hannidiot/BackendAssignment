@@ -1,4 +1,4 @@
-﻿using BackendAssignment.UseCases.Contributors.Create;
+﻿using BackendAssignment.UseCases;
 using BackendAssignment.Web.Configurations;
 
 var builder = WebApplication.CreateBuilder(args);

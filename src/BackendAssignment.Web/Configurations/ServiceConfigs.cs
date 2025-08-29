@@ -1,6 +1,4 @@
-﻿using BackendAssignment.Core.Interfaces;
-using BackendAssignment.Infrastructure;
-using BackendAssignment.Infrastructure.Email;
+﻿using BackendAssignment.Infrastructure;
 
 namespace BackendAssignment.Web.Configurations;
 
@@ -14,17 +12,10 @@ public static class ServiceConfigs
 
     if (builder.Environment.IsDevelopment())
     {
-      // Use a local test email server
-      // See: https://ardalis.com/configuring-a-local-test-email-server/
-      services.AddScoped<IEmailSender, MimeKitEmailSender>();
-
-      // Otherwise use this:
-      //builder.Services.AddScoped<IEmailSender, FakeEmailSender>();
 
     }
     else
     {
-      services.AddScoped<IEmailSender, MimeKitEmailSender>();
     }
 
     logger.LogInformation("{Project} services registered", "Mediatr and Email Sender");

@@ -1,9 +1,4 @@
-﻿using BackendAssignment.Core.Interfaces;
-using BackendAssignment.Core.Services;
-using BackendAssignment.Infrastructure.Data;
-using BackendAssignment.Infrastructure.Data.Queries;
-using BackendAssignment.UseCases.Contributors.List;
-
+﻿using BackendAssignment.Infrastructure.Data;
 
 namespace BackendAssignment.Infrastructure;
 public static class InfrastructureServiceExtensions
@@ -19,9 +14,7 @@ public static class InfrastructureServiceExtensions
      options.UseSqlite(connectionString));
 
     services.AddScoped(typeof(IRepository<>), typeof(EfRepository<>))
-           .AddScoped(typeof(IReadRepository<>), typeof(EfRepository<>))
-           .AddScoped<IListContributorsQueryService, ListContributorsQueryService>()
-           .AddScoped<IDeleteContributorService, DeleteContributorService>();
+           .AddScoped(typeof(IReadRepository<>), typeof(EfRepository<>));
 
 
     logger.LogInformation("{Project} services registered", "Infrastructure");

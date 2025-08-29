@@ -1,6 +1,6 @@
 ﻿using Ardalis.SharedKernel;
 using BackendAssignment.Core.ContributorAggregate;
-using BackendAssignment.UseCases.Contributors.Create;
+using BackendAssignment.UseCases.Orders.Create;
 using MediatR;
 using System.Reflection;
 
@@ -13,7 +13,7 @@ public static class MediatrConfigs
     var mediatRAssemblies = new[]
       {
         Assembly.GetAssembly(typeof(Contributor)), // Core
-        Assembly.GetAssembly(typeof(CreateContributorCommand)) // UseCases
+        Assembly.GetAssembly(typeof(CreateOrderCommand)) // UseCases
       };
 
     services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(mediatRAssemblies!))

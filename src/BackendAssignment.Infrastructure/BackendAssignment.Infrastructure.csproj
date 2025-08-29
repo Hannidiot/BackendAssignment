@@ -21,4 +21,9 @@
     <ProjectReference Include="..\BackendAssignment.Core\BackendAssignment.Core.csproj" />
     <ProjectReference Include="..\BackendAssignment.UseCases\BackendAssignment.UseCases.csproj" />
   </ItemGroup>
+  
+  <ItemGroup>
+    <Folder Include="Data\Config\" />
+    <Folder Include="Data\Migrations\" />
+  </ItemGroup>
 </Project>
